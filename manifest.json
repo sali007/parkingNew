@@ -1,0 +1,19 @@
+{
+  "type": "USER",
+  "name": "Parking",
+  "description": "Оплата парковки в регионах",
+  "version": "0.1.0",
+  "client": {
+    "launch": "app.html",
+    "icons": {
+      "100": "icon_100.png"
+    },
+    "default_locale": "ru"
+  },
+  "server": {
+  },
+  "config": {
+    "server": true
+  },
+  "manifest_version": 1.0
+}
