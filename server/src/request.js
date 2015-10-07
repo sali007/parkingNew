@@ -1,26 +1,53 @@
 define('request', [
     'http',
     'log',
+    'config'
     ]
-    , function(http, log) {
+    , function(http, log, config) {
 
-        function start(url, data, contentType, auth, header) {
+        var url = config.get('url'),
+            proxy = config.get('proxy'),
+            auth = config.get('auth'),
+            contentType = "application/json";
 
-            log(header);
-            log(url);
+        function init(data) {
+
             log(data);
-            var response = http.request(http.POST,
-                "http://crypto.qiwi.com:8080/crypto/https/",
-                                        data,
-                                        contentType,
-                                        auth,
-                                        header);
+            var response = http.request({
+                    method : http.POST,
+                    url : proxy,
+                    data : JSON.stringify(data),
+                    contentType : contentType,
+                    auth : auth,
+                    header : {
+                             "crypto-https-proxy-target": url + config.get('initPath'),
+                             "crypto-https-proxy-host-name-verifier": "allow-all"
+                     }
+            }, true
+            );
+
+            log(response);
             return response;
+        }
+
+        function vehicleTypes() {
+
+          var r =  http.request({
+              method : http.GET,
+              url : proxy,
+              header : {
+                  "crypto-https-proxy-target" : url + config.get('initPath'),
+                  "crypto-https-proxy-host-name-verifier" : "allow-all"
+              }
+          })
+
+            //log(r);
         }
 
 
         return {
-            start : start
+            init : init,
+            vehicleTypes : vehicleTypes
         }
 
     });

@@ -3,8 +3,9 @@
   "auth": "qiwi:e701b8a7c09ab4404d0d29a1ef772c2a",
   "initPath": "/qiwi/payment/init",
   "paymentPath": "/payment",
-  "refillPath": "/qiwi/balance/refill",
-  "cryptoUrl": "https://crypto.qiwi.com/crypto/https/"
+  "vehicleTypePath": "/api/2.6/config/vehicleTypes",
+  "getCost": "/qiwi/balance/refill",
+  "proxy": "https://crypto.qiwi.com/crypto/https/"
 
 
 }

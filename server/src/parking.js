@@ -1,44 +1,31 @@
 define('parking', [
-    'log',
-    'request',
-    'state',
-    'config',
-    'util',
+       'log',
+       'request',
+       'state',
+       'util'
     ], function(log, request, state, config, util) {
 
 
 
         function init(op, conf) {
 
-            var contentType = 'application/json';
-            var url = config.get('url') + config.get('initPath');
-            var cryptoUrl = config.get('cryptoUrl');
-
-            var  auth = config.get('auth');
-            var method = "POST";
-
-            var header = {
-                "crypto-https-proxy-target": "https://parking.fitdev.ru/qiwi/payment/init",
-                "crypto-https-proxy-host-name-verifier": "allow-all"
-            };
-
-
             var data = prepareData(op, 'balance');
 
-            log(op);
-         var response = request.start(
-                cryptoUrl,
-                data,
-                contentType,
-                auth,
-                header);
+            //log(op);
+
+            var response = request.init(data);
+        }
+
+        function getVehicleType() {
+
+           request.vehicleTypes();
 
         }
 
         function prepareData(op, reqType) {
 
             var d = {};
-
+            d.phone = op.walletPhone;
             d.zoneNumber = op.extra.zoneNumber;
             d.vrp = op.extra.vrp;
             d.duration = op.extra.duration;
@@ -59,7 +46,8 @@ define('parking', [
 
         return {
 
-            init : init
+            init : init,
+            getVehicleTypes : getVehicleType
 
         }
     });
