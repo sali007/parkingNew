@@ -1,11 +1,11 @@
 {
-  "url": "https://parking.fitdev.ru",
-  "auth": "qiwi:e701b8a7c09ab4404d0d29a1ef772c2a",
-  "initPath": "/qiwi/payment/init",
-  "paymentPath": "/payment",
-  "vehicleTypePath": "/api/2.6/config/vehicleTypes",
-  "getCost": "/qiwi/balance/refill",
-  "proxy": "https://crypto.qiwi.com/crypto/https/"
+  "url": "",
+  "auth": "",
+  "initPath": "",
+  "paymentPath": "",
+  "vehicleTypePath": "",
+  "getCost": "",
+  "proxy": ""
 
 
 }
